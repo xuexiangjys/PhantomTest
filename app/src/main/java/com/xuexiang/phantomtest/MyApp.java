@@ -23,6 +23,7 @@ public class MyApp extends Application {
 
         PhantomCore.getInstance().init(this, new PhantomCore.Config()
                 .setCheckVersion(false)
+                //设置事件回调
         .setPhantomEventCallback(new PhantomEventCallback() {
             @Override
             public void onPluginInstallStart(String name, boolean fromAssets) {
