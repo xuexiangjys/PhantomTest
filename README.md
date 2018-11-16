@@ -12,6 +12,7 @@
 
 [![](https://img.shields.io/badge/插件apk-1M-blue.svg)](https://github.com/xuexiangjys/PhantomTest/blob/master/apk/com.xuexiang.xqrcodetest_1.0.apk)
 
+注意：请将插件apk拷贝至sdcard下。
 
 ## Phantom介绍
 
