@@ -54,14 +54,14 @@
 
 #### 配置Gradle脚本
 
-> 特别需要注意的是，这里一定要使用 `Gradle 3.3 + Android Gradle Plugin 2.3.3`的方式，否则会
+> 特别需要注意的是，这里一定要使用 `Gradle 4.4 + Android Gradle Plugin 3.1.4`的方式，否则会
 
 1.在宿主项目根目录下的 build.gradle 中增加宿主 gradle 依赖
 
 ```
 buildscript {
     dependencies {
-      classpath 'com.wlqq.phantom:phantom-host-gradle:3.0.0'
+        classpath 'com.wlqq.phantom:phantom-host-gradle:3.1.2'
     }
 }
 ```
@@ -71,7 +71,7 @@ buildscript {
 apply plugin: 'com.wlqq.phantom.host'
 
 dependencies {
-    compile 'com.wlqq.phantom:phantom-host-lib:3.0.0'
+    implementation 'com.wlqq.phantom:phantom-host-lib:3.1.3'
 }
 ```
 
@@ -145,14 +145,14 @@ if (ret.isSuccess() && ret.plugin.start()) {
 
 #### 配置Gradle脚本
 
-> 特别需要注意的是，这里一定要使用 `Gradle 3.3 + Android Gradle Plugin 2.3.3`的方式，否则会
+> 特别需要注意的是，这里一定要使用 `Gradle 4.4 + Android Gradle Plugin 3.1.4`的方式，否则会
 
 1.在插件项目根目录下的 build.gradle 中增加插件 gradle 依赖
 
 ```
 buildscript {
     dependencies {
-      classpath 'com.wlqq.phantom:phantom-plugin-gradle:3.0.0'
+        classpath 'com.wlqq.phantom:phantom-gradle-plugin:3.1.3'
     }
 }
 ```
@@ -174,7 +174,7 @@ android {
 }
 
 dependencies {
-    provided 'com.wlqq.phantom:phantom-plugin-lib:3.0.0'
+    compileOnly 'com.wlqq.phantom:phantom-plugin-lib:3.1.2'
     compile 'com.android.support:support-v4:28.0.0'
 }
 ```

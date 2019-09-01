@@ -39,15 +39,8 @@ android {
     }
 
     applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            output.outputFile = new File(output.outputFile.parent,
-                    "${variant.applicationId}_${variant.versionName}.apk")
-
-            if (output.zipAlign != null) {
-                output.zipAlign.doLast {
-                    output.zipAlign.inputFile.delete()
-                }
-            }
+        variant.outputs.all { output ->
+            outputFileName = "${variant.applicationId}_${variant.versionName}.apk"
         }
     }
 
@@ -58,17 +51,37 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:28.0.0'
-    provided 'com.wlqq.phantom:phantom-plugin-lib:3.0.0'
-//    compile 'com.android.support:support-v4:28.0.0'
-    compile project(':xqrcode-lib')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    compileOnly 'com.wlqq.phantom:phantom-plugin-lib:3.1.2'
+    implementation project(':xqrcode-lib')
 }
 
 phantomPluginConfig {
     // BEGIN 剔除公共库配置
     // 若插件中有使用 support-v4 ，则需要剔除掉(必须)
     excludeLib "com.android.support:support-v4:28.0.0"
+    excludeLib "com.android.support:support-core-ui:28.0.0"
+    excludeLib "com.android.support:support-compat:28.0.0"
+    excludeLib "com.android.support:support-media-compat:28.0.0"
+    excludeLib "com.android.support:support-core-utils:28.0.0"
+    excludeLib "com.android.support:support-fragment:28.0.0"
+    excludeLib "com.android.support:support-annotations:28.0.0"
+    excludeLib "com.android.support:cursoradapter:28.0.0"
+    excludeLib "com.android.support:interpolator:28.0.0"
+    excludeLib "com.android.support:versionedparcelable:28.0.0"
+    excludeLib "com.android.support:documentfile:28.0.0"
+    excludeLib "com.android.support:customview:28.0.0"
+    excludeLib "com.android.support:slidingpanelayout:28.0.0"
+    excludeLib "com.android.support:swiperefreshlayout:28.0.0"
+    excludeLib "com.android.support:drawerlayout:28.0.0"
+    excludeLib "com.android.support:coordinatorlayout:28.0.0"
+    excludeLib "com.android.support:loader:28.0.0"
+    excludeLib "com.android.support:viewpager:28.0.0"
+    excludeLib "com.android.support:collections:28.0.0"
+    excludeLib "com.android.support:asynclayoutinflater:28.0.0"
+    excludeLib "com.android.support:print:28.0.0"
+    excludeLib "com.android.support:localbroadcastmanager:28.0.0"
     // END
 
     // BEGIN 生成插件额外的混淆配置文件，避免因剔除公共库引起的混淆问题
